@@ -1,0 +1,6 @@
+# IDE
+.idea/
+
+# sensitive data
+.env
+
