@@ -26,6 +26,15 @@ type (
 	}
 
 	Postgres struct {
+		User         string        `env-required:"true" yaml:"user" env:"USER"`
+		Password     string        `env-required:"true" yaml:"password" env:"PASSWORD"`
+		Host         string        `env-required:"true" yaml:"host" env:"HOST"`
+		Port         string        `env-required:"true" yaml:"port" env:"PORT"`
+		Database     string        `env-required:"true" yaml:"database" env:"DATABASE"`
+		SSLMode      string        `env-required:"true" yaml:"sslmode" env:"SSLMODE"`
+		PoolMaxConns int           `env-required:"true" yaml:"pool_max_conns" env:"POOL_MAX_CONNS"`
+		ConnAttempts int           `env-required:"true" yaml:"conn_attempts" env:"CONN_ATTEMPTS"`
+		ConnTimeout  time.Duration `env-required:"true" yaml:"conn_timeout" env:"CONN_TIMEOUT"`
 	}
 
 	Redis struct {

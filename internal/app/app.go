@@ -8,9 +8,18 @@ import (
 	"github.com/s02190058/auth-app/internal/config"
 	"github.com/s02190058/auth-app/internal/transport/http"
 	"github.com/s02190058/auth-app/pkg/httpserver"
+	"github.com/s02190058/auth-app/pkg/postgres"
 )
 
 func Run(cfg *config.Config) {
+	postgresCfg := postgres.Config(cfg.Postgres)
+	pool, err := postgres.New(&postgresCfg)
+	if err != nil {
+		//
+	}
+
+	_ = pool
+
 	router := http.InitRouter()
 
 	httpServerCfg := httpserver.Config(cfg.HTTP.Server)
@@ -28,7 +37,7 @@ func Run(cfg *config.Config) {
 		//
 	}
 
-	if err := httpServer.Shutdown(); err != nil {
+	if err = httpServer.Shutdown(); err != nil {
 		//
 	}
 }
